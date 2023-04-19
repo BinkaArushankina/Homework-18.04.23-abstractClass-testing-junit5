@@ -1,25 +1,12 @@
 package Homework;
 
-public class Four extends ParentClass {
-
-    public Four(String str) {
-        super(str);
+public class Four extends WordTransformer {
+    public boolean check(String str) {
+        return str.length() == 4;
     }
-
     public String stringLength(String str){
-        String[] strings = str.split(" ");
-
-        for (int i=0; i<strings.length; i++) {
-            if (strings[i].length() == 4) {
-                strings[i] = strings[i].toUpperCase();
-            }
-        }
-        return String.join(" ",strings);
+        return str.toLowerCase();
     }
 
-    public String toString() {
-        return "Four{" +
-                "str='" + str + '\'' +
-                "} " + super.toString();
-    }
+
 }

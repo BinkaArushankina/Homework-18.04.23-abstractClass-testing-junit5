@@ -5,37 +5,39 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChildClassesTest {
 
-    Three testThree;
-    Four testFour;
-    Five testFive;
+    Transformer transformer;
     String actual ;
 
 
     @BeforeEach
     public void init(){
-        testThree= new Three(actual);
-        testFour= new Four(actual);
-        testFive= new Five(actual);
+        transformer= new Transformer();
         actual = "aAa bBbB cCcCc dDdDdD";
     }
 
     @Test
+    public void testing_empty(){
+        String expected = "";
+        Three t= new Three();
+        assertEquals(expected,transformer.transform(expected,t));
+    }
+    @Test
     public void testing_three(){
-        String expected = "aaa bBbB cCcCc dDdDdD";
-
-        assertEquals(expected,testThree.stringLength(actual));
+        String expected = "AAA bBbB cCcCc dDdDdD";
+        Three t= new Three();
+        assertEquals(expected,transformer.transform(actual,t));
     }
     @Test
     public void testing_four(){
-        String expected = "aAa BBBB cCcCc dDdDdD";
-
-        assertEquals(expected,testFour.stringLength(actual));
+        String expected = "aAa bbbb cCcCc dDdDdD";
+        Four f= new Four();
+        assertEquals(expected,transformer.transform(actual,f));
     }
     @Test
     public void testing_five(){
         String expected = "aAa bBbB ***** dDdDdD";
-
-        assertEquals(expected,testFive.stringLength(actual));
+        Five t= new Five();
+        assertEquals(expected,transformer.transform(actual,t));
     }
 
 }
